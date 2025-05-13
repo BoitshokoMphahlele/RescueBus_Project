@@ -1,0 +1,38 @@
+﻿body{
+    background-color:paleturquoise;
+}
+
+.nav-link.active {
+    color: black !important; /* Active color */
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#NavBar{
+    background-color:darkgray;
+}
+
+#WelcomeHead{
+    color:gray;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+
+#BookButton{
+    margin-left:70px;
+    margin-bottom:100px;
+}
+
+h4{
+    color:gray;
+}
+
+#Ambulance{
+    background-color:paleturquoise;
+}
+
+p{
+    color:gray;
+}
+
+

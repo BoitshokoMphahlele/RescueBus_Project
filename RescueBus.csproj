@@ -143,6 +143,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\Ambulance.png" />
+    <Content Include="Content\Images\Emergency.png" />
+    <Content Include="Content\Images\favicon.png" />
+    <Content Include="Content\Images\RescueBusLogo.jpeg" />
+    <Content Include="Content\Images\SOS.png" />
+    <Content Include="Content\Mystyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
