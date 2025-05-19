@@ -125,7 +125,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +189,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Service\SelectServiceView.cshtml" />
-    <Content Include="Views\Service\BookingView.cshtml" />
+    <Content Include="Views\Service\ALSView.cshtml" />
+    <Content Include="Views\Service\BLSView.cshtml" />
+    <Content Include="Views\Service\PatientTransportView.cshtml" />
+    <Content Include="Views\Service\MUVView.cshtml" />
+    <Content Include="Views\Service\EMAView.cshtml" />
+    <Content Include="Views\Service\AirAmbulanceView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
