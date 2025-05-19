@@ -11,9 +11,9 @@
 
     <div class="row text-center mb-5">
         <div class="col-md-4 content-box">
-            <a href = '@Url.Action("ALSView","Service")' style="text-decoration: none; color: inherit;">
+            <a id="Service1" href = '@Url.Action("ALSView","Service")' style="text-decoration: none; color: inherit;">
                 <div class="card shadow" style="background-color:darkgray;">
-                    <h4 id="Service1">ALS (Advances Life Support)</h4>
+                    <h4>ALS (Advances Life Support)</h4>
                     <p>ALS ambulance is staffed by a Paramedic and is used to transport patients who require high level of care.</p>
                 </div>
             </a>
@@ -76,6 +76,7 @@
 
 </div>
 
-<script src="~/Scripts/MyScript.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="@Url.Content("~/Scripts/Myscript.js")"></script>
 
 
