@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "BookingView";
+}
+
+@Styles.Render("~/Content/MyStyles.css")
+
+<div>
+    <img id="formPic" class="text-center p-3" src="~/Content/Images/Form_picture.png" width="100" height="100" />
+    <div class="row text-center">
+        <h4 class="text-secondary">#</h4>
+    </div>
+    <div class="card bg-secondary w-50 mx-auto rounded-4 h-100">
+        <form class="align-items-center">
+            <div class="row">
+                <div class="col ms-3">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input id="fullname" class="form-control" type="text" placeholder="Jack Adams" />
+                </div>
+                <div class="col">
+                    <label for="Phone" class="form-label">Phone</label>
+                    <input id="Phone" class="form-control" type="text" placeholder="+27 12 345 6789" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col ms-3">
+                    <label for="Time" class="form-label">Pick-Up Time</label>
+                    <input id="Time" type="datetime" class="form-control" />
+                </div>
+                <div class="col">
+                    <label for="ReasonDropdown" class="form-label">Reason</label>
+                    <select id="ReasonDropdown" name="Reason" class="form-control">Reason</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col ms-3">
+                    <label for="VehicleDropdown" class="form-label">Vehicle</label>
+                    <select id="VehicleDropdown" name="Vehicle" class="form-control">Vehicle</select>
+                </div>
+                <div class="col">
+                    <label for="DriverDropdown" class="form-label">Driver</label>
+                    <select id="DriverDropdown" name="Driver" class="form-control">Driver</select>
+                </div>
+            </div>
+            
+            <div class="row mb-2 ms-2 w-50">
+                <label for="Address" class="form-label">Pick-Up Address</label>
+                <input id="Address" type="text" class="form-control" placeholder="Please type your address here..." />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/Scripts/MyScript.js"></script>
+

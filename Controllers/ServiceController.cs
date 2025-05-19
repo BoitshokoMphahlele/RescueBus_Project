@@ -13,5 +13,10 @@ namespace RescueBus.Controllers
         {
             return View();
         }
+
+        public ActionResult BookingView()
+        {
+            return View();
+        }
     }
 }

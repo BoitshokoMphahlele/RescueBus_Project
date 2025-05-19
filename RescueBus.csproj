@@ -148,6 +148,7 @@
     <Content Include="Content\Images\Ambulance.png" />
     <Content Include="Content\Images\Emergency.png" />
     <Content Include="Content\Images\favicon.png" />
+    <Content Include="Content\Images\Form_picture.png" />
     <Content Include="Content\Images\RescueBusLogo.jpeg" />
     <Content Include="Content\Images\SOS.png" />
     <Content Include="Content\Mystyles.css" />
@@ -187,6 +188,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Service\SelectServiceView.cshtml" />
+    <Content Include="Views\Service\BookingView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
