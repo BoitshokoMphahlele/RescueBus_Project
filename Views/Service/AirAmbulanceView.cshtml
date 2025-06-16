@@ -1,5 +1,4 @@
-﻿
-
+﻿@model RescueBus.Models.Booking
 @{
     ViewBag.Title = "AirAmbulanceView";
 }
@@ -9,50 +8,56 @@
 <div>
     <img id="formPic" class="text-center p-3" src="~/Content/Images/Form_picture.png" width="100" height="100" />
     <div class="row text-center">
-        <h4 class="text-secondary">Air Ambulance</h4>
+        <h4 id="ServiceHeading" class="text-secondary">Air Ambulance</h4>
     </div>
     <div class="card bg-secondary w-50 mx-auto rounded-4 h-100">
-        <form class="align-items-center">
+        @using (Html.BeginForm("AAS", "Booking", FormMethod.Post))
+        {
             <div class="row">
                 <div class="col ms-3">
-                    <label for="fullname" class="form-label">Full Name</label>
-                    <input id="fullname" class="form-control" type="text" placeholder="Jack Adams" />
+                    @Html.LabelFor(m => m.FullName)
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Jack Adams" })
                 </div>
                 <div class="col">
-                    <label for="Phone" class="form-label">Phone</label>
-                    <input id="Phone" class="form-control" type="text" placeholder="+27 12 345 6789" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col ms-3">
-                    <label for="Time" class="form-label">Pick-Up Time</label>
-                    <input id="Time" type="datetime" class="form-control" />
-                </div>
-                <div class="col">
-                    <label for="ReasonDropdown" class="form-label">Reason</label>
-                    <select id="ReasonDropdown" name="Reason" class="form-control">Reason</select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col ms-3">
-                    <label for="VehicleDropdown" class="form-label">Vehicle</label>
-                    <select id="VehicleDropdown" name="Vehicle" class="form-control">Vehicle</select>
-                </div>
-                <div class="col">
-                    <label for="DriverDropdown" class="form-label">Driver</label>
-                    <select id="DriverDropdown" name="Driver" class="form-control">Driver</select>
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "+27 12 345 6789" })
                 </div>
             </div>
 
-            <div class="row mb-2 ms-2 w-50">
-                <label for="Address" class="form-label">Pick-Up Address</label>
-                <input id="Address" type="text" class="form-control" placeholder="Please type your address here..." />
+            <div class="row mt-2">
+                <div class="col ms-3">
+                    @Html.LabelFor(m => m.PickUpTime, "Pick-Up Time")
+                    @Html.TextBoxFor(m => m.PickUpTime, new { @class = "form-control", type = "datetime-local" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(m => m.Reason)
+                    @Html.DropDownListFor(m => m.Reason, (SelectList)ViewBag.Reasons, "Select Reason", new { @class = "form-control" })
+                </div>
             </div>
-        </form>
+
+            <div class="row mt-2">
+                <div class="col ms-3">
+                    @Html.LabelFor(m => m.Vehicle)
+                    @Html.DropDownListFor(m => m.Vehicle, (List<SelectListItem>)ViewBag.Vehicles, "Select Vehicle", new { @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(m => m.Driver)
+                    @Html.DropDownListFor(m => m.Driver, (List<SelectListItem>)ViewBag.Drivers, "Select a Driver", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row mt-2 ms-2 w-50">
+                @Html.LabelFor(m => m.Address, "Pick-Up Address")
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Please type your address here..." })
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-secondary mb-3 mt-3">Book Ambulance</button>
+            </div>
+        }
     </div>
 </div>
 
-<script src="~/Scripts/MyScript.js"></script>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="@Url.Content("~/Scripts/Myscript.js")"></script>
 

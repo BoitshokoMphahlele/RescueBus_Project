@@ -120,13 +120,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Booking.cs" />
-    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\DriverRepository.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,11 +151,14 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Images\Ambulance.png" />
+    <Content Include="Content\Images\Confirmed.png" />
     <Content Include="Content\Images\Emergency.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\Form_picture.png" />
+    <Content Include="Content\Images\Person.png" />
     <Content Include="Content\Images\RescueBusLogo.jpeg" />
     <Content Include="Content\Images\SOS.png" />
+    <Content Include="Content\Images\Time.png" />
     <Content Include="Content\Mystyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -195,6 +202,8 @@
     <Content Include="Views\Service\MUVView.cshtml" />
     <Content Include="Views\Service\EMAView.cshtml" />
     <Content Include="Views\Service\AirAmbulanceView.cshtml" />
+    <Content Include="Views\Booking\BookingConfirmedView.cshtml" />
+    <Content Include="Views\Booking\RideHistoryView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
