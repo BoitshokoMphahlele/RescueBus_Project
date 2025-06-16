@@ -28,5 +28,14 @@ namespace RescueBus.Controllers
 
             return View("BookingConfirmedView", booking);
         }
+
+        public ActionResult RideHistoryView()
+        {
+            return View();
+        }
+        public ActionResult BookingConfirmedView()
+        {
+            return View();
+        }
     }
 }

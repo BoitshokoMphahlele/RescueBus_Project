@@ -1,7 +1,52 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "RideHistoryView";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<h2>RideHistoryView</h2>
+<h2>Ride History</h2>
 
+<div id="rideHistoryContainer" class="container mt-3">
+   
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        const rideIds = JSON.parse(localStorage.getItem("rideHistory")) || [];
+
+        if (rideIds.length === 0) {
+            $('#rideHistoryContainer').html("<p>No ride history available.</p>");
+            return;
+        }
+
+        rideIds.forEach(function (id, index) {
+            const bookingData = localStorage.getItem(id);
+            if (!bookingData) return;
+
+            const booking = JSON.parse(bookingData);
+
+            const card = $(
+                `
+                <div class="card mb-3 p-3 booking-card" data-id="${booking.BookingID}" style="cursor: pointer;">
+                    <p><strong>ID:</strong> ${booking.BookingID}</p>
+                    <p><strong>Driver Name:</strong> ${booking.Driver}</p>
+                    <p><strong>Ambulance Type:</strong> ${booking.Vehicle}</p>
+                    <p><strong>PickUp Address:</strong> ${booking.Address}</p>        
+                    
+                </div>`
+            );
+
+            $('#rideHistoryContainer').append(card);
+        });
+
+       
+        $('#rideHistoryContainer').on('click', '.booking-card', function () {
+            const bookingId = $(this).data('id');
+            localStorage.setItem("selectedBookingId", bookingId);
+            window.location.href = "/Booking/BookingConfirmedView"; 
+        });
+
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

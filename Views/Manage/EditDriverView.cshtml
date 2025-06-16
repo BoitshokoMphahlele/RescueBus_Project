@@ -1,0 +1,28 @@
+﻿@model RescueBus.Models.Driver
+
+<h2>Edit Driver</h2>
+
+@using (Html.BeginForm("EditDriverView", "Manage", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.servicetype)
+        @Html.TextBoxFor(m => m.servicetype, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.imagepath)
+        @Html.TextBoxFor(m => m.imagepath, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Update Driver</button>
+}

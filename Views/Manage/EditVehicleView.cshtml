@@ -1,0 +1,24 @@
+﻿@model RescueBus.Models.Vehicle
+@{
+    ViewBag.Title = "EditVehicleView";
+}
+
+<h2>Edit Vehicle</h2>
+@using (Html.BeginForm("EditVehicleView", "Manage", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.RegistrationId)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Type)
+        @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.imagepath)
+        @Html.TextBoxFor(m => m.imagepath, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Update Vehicle</button>
+}
+
+

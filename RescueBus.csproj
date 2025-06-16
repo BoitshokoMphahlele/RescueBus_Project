@@ -122,12 +122,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\DriverRepository.cs" />
+    <Compile Include="Models\ManageViewModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleRepository.cs" />
@@ -151,11 +153,31 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Images\Ambulance.png" />
+    <Content Include="Content\Images\Ambulance1.png" />
+    <Content Include="Content\Images\Ambulance10.png" />
+    <Content Include="Content\Images\Ambulance2.jpeg" />
+    <Content Include="Content\Images\Ambulance3.png" />
+    <Content Include="Content\Images\Ambulance4.png" />
+    <Content Include="Content\Images\Ambulance5.png" />
+    <Content Include="Content\Images\Ambulance6.png" />
+    <Content Include="Content\Images\Ambulance7.png" />
+    <Content Include="Content\Images\Ambulance8.jpeg" />
+    <Content Include="Content\Images\Ambulance9.png" />
     <Content Include="Content\Images\Confirmed.png" />
     <Content Include="Content\Images\Emergency.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\Form_picture.png" />
     <Content Include="Content\Images\Person.png" />
+    <Content Include="Content\Images\Person1.png" />
+    <Content Include="Content\Images\Person10.png" />
+    <Content Include="Content\Images\Person2.jpeg" />
+    <Content Include="Content\Images\Person3.png" />
+    <Content Include="Content\Images\Person4.png" />
+    <Content Include="Content\Images\Person5.png" />
+    <Content Include="Content\Images\Person6.png" />
+    <Content Include="Content\Images\Person7.png" />
+    <Content Include="Content\Images\Person8.png" />
+    <Content Include="Content\Images\Person9.png" />
     <Content Include="Content\Images\RescueBusLogo.jpeg" />
     <Content Include="Content\Images\SOS.png" />
     <Content Include="Content\Images\Time.png" />
@@ -204,6 +226,11 @@
     <Content Include="Views\Service\AirAmbulanceView.cshtml" />
     <Content Include="Views\Booking\BookingConfirmedView.cshtml" />
     <Content Include="Views\Booking\RideHistoryView.cshtml" />
+    <Content Include="Views\Manage\ManageView.cshtml" />
+    <Content Include="Views\Manage\CreateDriverView.cshtml" />
+    <Content Include="Views\Manage\AddVehicleView.cshtml" />
+    <Content Include="Views\Manage\EditDriverView.cshtml" />
+    <Content Include="Views\Manage\EditVehicleView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,6 +11,7 @@ namespace RescueBus.Models
         public int Id { get; set; }
         private string _Name;
         private string _PhoneNumber;
+
       
 
         //Constructor
@@ -54,6 +55,7 @@ namespace RescueBus.Models
     public class Driver:Person
     {
         public string servicetype {  get; set; }
+        public string imagepath { get; set; }
         public Driver() { }
     }
 }

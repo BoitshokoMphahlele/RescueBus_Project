@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<!-- Save to localStorage -->
+
 <script>
     const booking = {
         BookingID: "@Model.BookingID",
@@ -71,4 +71,10 @@
     };
 
     localStorage.setItem("lastBooking", JSON.stringify(booking));
+    localStorage.setItem(booking.BookingID, JSON.stringify(booking));
+    let history = JSON.parse(localStorage.getItem("rideHistory")) || [];
+    if (!history.includes(booking.BookingID)) {
+        history.push(booking.BookingID);
+        localStorage.setItem("rideHistory", JSON.stringify(history));
+    }
 </script>

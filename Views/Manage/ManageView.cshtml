@@ -1,0 +1,176 @@
+﻿@model RescueBus.Models.ManageViewModel
+
+<div class="card mb-5">
+    <h2>Drivers</h2>
+
+    <input type="text" id="searchBox" placeholder="Search Name" class="form-control" style="max-width: 300px; display: inline-block; margin-bottom: 20px;" />
+    <button type="button" id="searchbutton">Search</button>
+    <select id="serviceFilter" class="form-select" style="max-width: 150px; display: inline-block; margin-left: 10px; margin-bottom: 20px;">
+        <option value="ALL">Select Service</option>
+        <option value="ALS">ALS</option>
+        <option value="BLS">BLS</option>
+        <option value="MUV">MUV</option>
+        <option value="EMA">EMA</option>
+        <option value="AAS">AAS</option>
+        <option value="PatientTransport">Patient Transport</option>
+    </select>
+
+        <div class="d-flex justify-content-end me-4">
+            <button class="btn btn-primary" onclick="location.href='@Url.Action("CreateDriverView", "Manage")'">
+                ADD Driver
+            </button>
+        </div>
+
+
+        <table class="table" id="DriverTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Full Name</th>
+                    <th>Phone Number</th>
+                    <th>Service Type</th>
+                    <th>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model.Drivers)
+                {
+                    <tr>
+
+                        <td>
+                            @if (!string.IsNullOrWhiteSpace(d.imagepath))
+                            {
+                                <img src="@Url.Content(d.imagepath)" alt="Driver Image" width="80" height="80" style="object-fit: cover; border-radius: 8px;" />
+                            }
+                            else
+                            {
+                                <span>No image</span>
+                            }
+                        </td>
+                        <td>@d.Name</td>
+                        <td>@d.PhoneNumber</td>
+                        <td>@d.servicetype</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="@Url.Action("EditDriverView", "Manage", new { id = d.Id })">Edit</a>
+                            <button class="btn btn-sm btn-danger" onclick="deleteDriver(this)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>
+
+<div class="card mt-5">
+    <h2>Vehicles</h2>
+    <div class="d-flex justify-content-end me-4">
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("AddVehicleView", "Manage")'">
+            ADD Vehicle
+        </button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Registration Number</th>
+                <th>Service Type</th>
+                <th>Controls</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model.Vehicles)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(v.imagepath))
+                        {
+                            <img src="@Url.Content(v.imagepath)" alt="Driver Image" width="80" height="80" style="object-fit: cover; border-radius: 8px;" />
+                        }
+                        else
+                        {
+                            <span>No image</span>
+                        }
+                    </td>
+                    <td>@v.RegistrationId</td>
+                    <td>@v.Type</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" href="@Url.Action("EditVehicleView", "Manage", new { id = v.RegistrationId })">Edit</a>
+                        <button class="btn btn-sm btn-danger" onclick="deleteVehicle(this)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="btn btn-success float-end p-3">
+        <button type="button" id="exportbutton">Export</button>
+    </div>
+</div>
+
+<script>
+    function deleteDriver(button) {
+        const row = button.closest("tr");
+        row.remove();
+    }
+    function deleteVehicle(button) {
+        const row = button.closest("tr");
+        row.remove();
+    }
+
+    function searchDriverByName() {
+        console.log("Search function triggered");
+        const searchTerm = document.getElementById("searchBox").value.toLowerCase();
+        const rows = document.querySelectorAll("#DriverTable tbody tr");
+
+        if (!searchTerm) {
+            // If search is empty, show all rows immediately
+            rows.forEach(row => row.style.display = "");
+            return;
+        }
+
+        // Hide rows that don't match, show rows that match
+        rows.forEach(row => {
+            const nameCell = row.cells[1];
+            const name = nameCell.textContent.toLowerCase();
+
+            if (name.includes(searchTerm)) {
+                row.style.display = "";           // Show matching rows
+                row.style.backgroundColor = "lightgreen";
+                row.scrollIntoView({ behavior: "smooth", block: "center" });
+            } else {
+                row.style.display = "none";       // Hide non-matching rows
+                row.style.backgroundColor = "";
+            }
+        });
+
+        // After 5 seconds, reset table to show all rows and remove highlights
+        setTimeout(() => {
+            rows.forEach(row => {
+                row.style.display = "";
+                row.style.backgroundColor = "";
+            });
+        }, 5000);
+    }
+
+
+    // Trigger search on button click
+    document.getElementById("searchbutton").addEventListener("click", searchDriverByName);
+
+    document.getElementById('serviceFilter').addEventListener('change', function () {
+        const selectedService = this.value;
+        const rows = document.querySelectorAll("#DriverTable tbody tr");
+        rows.forEach(row => {
+            const serviceCell = row.cells[3].textContent.trim();
+
+            if (selectedService === "ALL") {
+                row.style.display = "";
+            } else {
+                if (serviceCell === selectedService) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        });
+    });
+   
+
+</script>

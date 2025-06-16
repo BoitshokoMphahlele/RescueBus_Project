@@ -9,5 +9,6 @@ namespace RescueBus.Models
     {
         public int RegistrationId { get; set; }
         public string Type { get; set; }
+        public string imagepath { get; set; }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model RescueBus.Models.Vehicle
+
+@{
+    ViewBag.Title = "Add Vehicle";
+}
+
+<h2>Add New Vehicle</h2>
+
+@using (Html.BeginForm("AddVehicleView", "Manage", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RegistrationId)
+        @Html.TextBoxFor(m => m.RegistrationId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.RegistrationId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Type)
+        @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.imagepath)
+        @Html.TextBoxFor(m => m.imagepath, new { @class = "form-control", placeholder = "/Content/Images/ambulance1.jpg" })
+        @Html.ValidationMessageFor(m => m.imagepath, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Vehicle</button>
+}
