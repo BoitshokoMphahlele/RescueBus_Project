@@ -201,5 +201,17 @@ namespace RescueBus.Controllers
         {
             return View();
         }
+        public ActionResult BookingConfirmed(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("RideHistoryView"); // or any fallback
+            }
+
+            ViewBag.BookingId = id; // pass to JS if needed
+            ViewBag.Title = "Booking Confirmed";
+
+            return View();
+        }
     }
 }
