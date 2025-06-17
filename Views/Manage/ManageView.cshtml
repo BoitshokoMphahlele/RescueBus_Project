@@ -100,9 +100,10 @@
             }
         </tbody>
     </table>
-    <div class="btn btn-success float-end p-3">
-        <button type="button" id="exportbutton">Export</button>
+    <div class="float-end p-3">
+        <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("ExportVehiclesToFile", "Manage")'">Export</button>
     </div>
+
 </div>
 
 <script>

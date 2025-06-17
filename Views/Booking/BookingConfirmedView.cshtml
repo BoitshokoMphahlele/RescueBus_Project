@@ -29,7 +29,7 @@
             <strong>Driver Details</strong>
         </div>
         <div class="card-body d-flex align-items-center">
-            <img src="~/Content/Images/Person.png" width="80" height="80" class="rounded-circle me-4" alt="Driver" />
+            <img src="@Url.Content(Model.DriverImagePath)" width="80" height="80" class="rounded-circle me-4" alt="Driver" />
             <div>
                 <p><strong>Driver Name:</strong> <span id="driverName"></span></p>
                 <p><strong>Phone Number:</strong> <span id="driverPhone"></span></p>
@@ -42,7 +42,7 @@
             <strong>Ambulance Details</strong>
         </div>
         <div class="card-body d-flex align-items-center">
-            <img src="~/Content/Images/Ambulance.png" width="80" height="80" class="me-4" alt="Ambulance" />
+            <img src="@Url.Content(Model.VehicleImagePath)" width="80" height="80" class="me-4" alt="Ambulance" />
             <div>
                 <p><strong>Ambulance Type:</strong> <span id="ambulanceType"></span></p>
                 <p><strong>Registration Number:</strong> <span id="vehicleNumber"></span></p>

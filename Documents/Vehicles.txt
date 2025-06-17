@@ -1,0 +1,11 @@
+Vehicle RegistrationID - Type
+1080 - ALS
+1081 - ALS
+1083 - SOS
+1084 - BLS
+1085 - MUV
+1082 - SOS
+1087 - EMA
+1088 - EMA
+1089 - PatientTransport
+1092 - AAS

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace RescueBus.Controllers
 {
@@ -107,25 +108,38 @@ namespace RescueBus.Controllers
 
             return RedirectToAction("ManageView");
         }
-        public ActionResult ExportVehicles()
+
+        public FileResult DownloadFile(string fileName)
         {
-            var vehicles = VehicleRepository.GetVehicles(); // Replace with your data source
+            string path = Server.MapPath("~/Documents/") + fileName;
+            byte[] bytes = System.IO.File.ReadAllBytes(path);
+            return File(bytes, "application/octet-stream", fileName);
+        }
 
-            var sb = new StringBuilder();
+        public ActionResult ExportVehiclesToFile()
+        {
+            var vehicles = VehicleRepository.GetAll();
 
-            // Add header
-            sb.AppendLine("ID,Make,Model,Year");
+            // Construct the text content
+            var lines = new List<string> { "Vehicle RegistrationID - Type" };
+            lines.AddRange(vehicles.Select(v => $"{v.RegistrationId} - {v.Type}"));
 
-            // Add each vehicle's info
-            foreach (var v in vehicles)
+            // Set file path and name
+            string fileName = "Vehicles.txt";
+            string directoryPath = Server.MapPath("~/Documents/");
+            string fullPath = Path.Combine(directoryPath, fileName);
+
+            // Ensure directory exists
+            if (!Directory.Exists(directoryPath))
             {
-                sb.AppendLine($"{v.RegistrationId},{v.Type}");
+                Directory.CreateDirectory(directoryPath);
             }
 
-            // Convert to bytes
-            byte[] buffer = Encoding.UTF8.GetBytes(sb.ToString());
+            // Write to file
+            System.IO.File.WriteAllLines(fullPath, lines);
 
-            return File(buffer, "text/csv", "Vehicles.csv");
+            // Redirect to the FileController for download
+            return RedirectToAction("DownloadFile", "Manage", new { fileName = fileName });
         }
 
 

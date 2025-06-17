@@ -18,6 +18,8 @@ namespace RescueBus.Models
         public  string Vehicle { get; set; }
         public string Driver { get; set; }
         public string Address { get; set; }
+        public string DriverImagePath { get; set; }
+        public string VehicleImagePath { get; set; }
 
         //Constructor
         public Booking()
