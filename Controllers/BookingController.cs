@@ -169,13 +169,13 @@ namespace RescueBus.Controllers
             var sosDriver = drivers.FirstOrDefault(d => d.servicetype == "SOS");
             if (sosDriver == null)
             {
-                sosDriver = new Driver { Name = "Unassigned", PhoneNumber = "Unknown" };
+                sosDriver = new Driver { Name = "Unassigned", PhoneNumber = "Unknown", imagepath = "~/Content/Images/Person.png" };
             }
 
             var sosVehicle = vehicles.FirstOrDefault(v => v.Type == "SOS");
             if (sosVehicle == null)
             {
-                sosVehicle = new Vehicle { RegistrationId = 0, Type = "Ambulance" };
+                sosVehicle = new Vehicle { RegistrationId = 0, Type = "Ambulance", imagepath = "~/Content/Images/Ambulance.png" };
             }
 
             var booking = new Booking
@@ -187,7 +187,9 @@ namespace RescueBus.Controllers
                 Driver = sosDriver.Name,
                 Phone = sosDriver.PhoneNumber,
                 servicetype = "SOS",
-                Vehicle = sosVehicle.RegistrationId.ToString()
+                Vehicle = sosVehicle.RegistrationId.ToString(),
+                DriverImagePath = sosDriver.imagepath,
+                VehicleImagePath = sosVehicle.imagepath
             };
 
             return View("BookingConfirmedView", booking);
