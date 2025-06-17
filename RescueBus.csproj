@@ -231,6 +231,7 @@
     <Content Include="Views\Manage\AddVehicleView.cshtml" />
     <Content Include="Views\Manage\EditDriverView.cshtml" />
     <Content Include="Views\Manage\EditVehicleView.cshtml" />
+    <Content Include="Views\Booking\BookingConfirmedFromHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

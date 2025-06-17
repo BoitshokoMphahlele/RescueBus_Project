@@ -54,7 +54,7 @@
         $('#rideHistoryContainer').on('click', '.booking-card', function () {
             const bookingId = $(this).data('id');
             localStorage.setItem("selectedBookingId", bookingId);
-            window.location.href = "/Booking/BookingConfirmedView"; 
+            window.location.href = "/Booking/ViewConfirmedBooking"; 
         });
 
     });

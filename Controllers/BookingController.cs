@@ -215,5 +215,9 @@ namespace RescueBus.Controllers
 
             return View();
         }
+        public ActionResult ViewConfirmedBooking()
+        {
+            return View("BookingConfirmedFromHistory");
+        }
     }
 }

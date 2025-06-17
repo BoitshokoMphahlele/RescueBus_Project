@@ -1,109 +1,122 @@
 ﻿@model RescueBus.Models.ManageViewModel
 
-<div class="card mb-5">
-    <h2>Drivers</h2>
+<div class="container mt-4">
+    <!-- Drivers Section -->
+    <div class="card shadow-sm p-4 mb-5 rounded">
+        <h2 class="mb-4 text-center fw-bold">Driver and Vehicle Management</h2>
+        <h4 class="text-primary">Drivers</h4>
 
-    <input type="text" id="searchBox" placeholder="Search Name" class="form-control" style="max-width: 300px; display: inline-block; margin-bottom: 20px;" />
-    <button type="button" id="searchbutton">Search</button>
-    <select id="serviceFilter" class="form-select" style="max-width: 150px; display: inline-block; margin-left: 10px; margin-bottom: 20px;">
-        <option value="ALL">Select Service</option>
-        <option value="ALS">ALS</option>
-        <option value="BLS">BLS</option>
-        <option value="MUV">MUV</option>
-        <option value="EMA">EMA</option>
-        <option value="AAS">AAS</option>
-        <option value="PatientTransport">Patient Transport</option>
-    </select>
-
-        <div class="d-flex justify-content-end me-4">
-            <button class="btn btn-primary" onclick="location.href='@Url.Action("CreateDriverView", "Manage")'">
-                ADD Driver
-            </button>
+        <div class="row align-items-center mb-3">
+            <div class="col-md-4">
+                <input type="text" id="searchBox" placeholder="Search Driver Name" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <select id="serviceFilter" class="form-select">
+                    <option value="ALL">Select Service</option>
+                    <option value="ALS">ALS</option>
+                    <option value="BLS">BLS</option>
+                    <option value="MUV">MUV</option>
+                    <option value="EMA">EMA</option>
+                    <option value="AAS">AAS</option>
+                    <option value="PatientTransport">Patient Transport</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="button" id="searchbutton" class="btn btn-outline-primary w-100">Search</button>
+            </div>
+            <div class="col-md-3 text-end">
+                <button class="btn btn-success" onclick="location.href='@Url.Action("CreateDriverView", "Manage")'">Create</button>
+            </div>
         </div>
 
-
-        <table class="table" id="DriverTable">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Full Name</th>
-                    <th>Phone Number</th>
-                    <th>Service Type</th>
-                    <th>Controls</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var d in Model.Drivers)
-                {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle" id="DriverTable">
+                <thead class="table-light">
                     <tr>
-
-                        <td>
-                            @if (!string.IsNullOrWhiteSpace(d.imagepath))
-                            {
-                                <img src="@Url.Content(d.imagepath)" alt="Driver Image" width="80" height="80" style="object-fit: cover; border-radius: 8px;" />
-                            }
-                            else
-                            {
-                                <span>No image</span>
-                            }
-                        </td>
-                        <td>@d.Name</td>
-                        <td>@d.PhoneNumber</td>
-                        <td>@d.servicetype</td>
-                        <td>
-                            <a class="btn btn-sm btn-warning" href="@Url.Action("EditDriverView", "Manage", new { id = d.Id })">Edit</a>
-                            <button class="btn btn-sm btn-danger" onclick="deleteDriver(this)">Delete</button>
-                        </td>
+                        <th>Image</th>
+                        <th>First Name</th>
+                        <th>Phone Number</th>
+                        <th>Service</th>
+                        <th>Controls</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-</div>
-
-<div class="card mt-5">
-    <h2>Vehicles</h2>
-    <div class="d-flex justify-content-end me-4">
-        <button class="btn btn-primary" onclick="location.href='@Url.Action("AddVehicleView", "Manage")'">
-            ADD Vehicle
-        </button>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Registration Number</th>
-                <th>Service Type</th>
-                <th>Controls</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var v in Model.Vehicles)
-            {
-                <tr>
-                    <td>
-                        @if (!string.IsNullOrWhiteSpace(v.imagepath))
-                        {
-                            <img src="@Url.Content(v.imagepath)" alt="Driver Image" width="80" height="80" style="object-fit: cover; border-radius: 8px;" />
-                        }
-                        else
-                        {
-                            <span>No image</span>
-                        }
-                    </td>
-                    <td>@v.RegistrationId</td>
-                    <td>@v.Type</td>
-                    <td>
-                        <a class="btn btn-sm btn-warning" href="@Url.Action("EditVehicleView", "Manage", new { id = v.RegistrationId })">Edit</a>
-                        <button class="btn btn-sm btn-danger" onclick="deleteVehicle(this)">Delete</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <div class="float-end p-3">
-        <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("ExportVehiclesToFile", "Manage")'">Export</button>
+                </thead>
+                <tbody>
+                    @foreach (var d in Model.Drivers)
+                    {
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(d.imagepath))
+                                {
+                                    <img src="@Url.Content(d.imagepath)" alt="Driver Image" class="rounded-circle" width="50" height="50" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No image</span>
+                                }
+                            </td>
+                            <td>@d.Name</td>
+                            <td>@d.PhoneNumber</td>
+                            <td>@d.servicetype</td>
+                            <td>
+                                <a class="btn btn-sm btn-warning me-2" href="@Url.Action("EditDriverView", "Manage", new { id = d.Id })">Update</a>
+                                <button class="btn btn-sm btn-danger" onclick="deleteDriver(this)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 
+    <!-- Vehicles Section -->
+    <div class="card shadow-sm p-4 mb-5 rounded">
+        <h4 class="text-primary">Vehicles</h4>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div></div>
+            <div>
+                <button class="btn btn-success" onclick="location.href='@Url.Action("AddVehicleView", "Manage")'">Create</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Image</th>
+                        <th>Registration</th>
+                        <th>Service</th>
+                        <th>Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var v in Model.Vehicles)
+                    {
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(v.imagepath))
+                                {
+                                    <img src="@Url.Content(v.imagepath)" alt="Vehicle Image" class="rounded-circle" width="50" height="50" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No image</span>
+                                }
+                            </td>
+                            <td>@v.RegistrationId</td>
+                            <td>@v.Type</td>
+                            <td>
+                                <a class="btn btn-sm btn-warning me-2" href="@Url.Action("EditVehicleView", "Manage", new { id = v.RegistrationId })">Update</a>
+                                <button class="btn btn-sm btn-danger" onclick="deleteVehicle(this)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="text-end mt-3">
+            <button type="button" class="btn btn-outline-success" onclick="location.href='@Url.Action("ExportVehiclesToFile", "Manage")'">Export</button>
+        </div>
+    </div>
 </div>
 
 <script>
