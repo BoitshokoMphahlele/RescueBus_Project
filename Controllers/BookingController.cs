@@ -28,6 +28,42 @@ namespace RescueBus.Controllers
 
             return View("BookingConfirmedView", booking);
         }
+        [HttpPost]
+        public ActionResult MUVView(Booking booking)
+        {
+            booking.servicetype = "MUV";
+            booking.BookingID = Guid.NewGuid().ToString();
+            booking.bookingDate = DateTime.Now;
+
+            return View("BookingConfirmedView", booking);
+        }
+        [HttpPost]
+        public ActionResult PatientTransportView(Booking booking)
+        {
+            booking.servicetype = "PatientTransport";
+            booking.BookingID = Guid.NewGuid().ToString();
+            booking.bookingDate = DateTime.Now;
+
+            return View("BookingConfirmedView", booking);
+        }
+        [HttpPost]
+        public ActionResult AirAmbulanceView(Booking booking)
+        {
+            booking.servicetype = "AAS";
+            booking.BookingID = Guid.NewGuid().ToString();
+            booking.bookingDate = DateTime.Now;
+
+            return View("BookingConfirmedView", booking);
+        }
+        [HttpPost]
+        public ActionResult EMAView(Booking booking)
+        {
+            booking.servicetype = "EMA";
+            booking.BookingID = Guid.NewGuid().ToString();
+            booking.bookingDate = DateTime.Now;
+
+            return View("BookingConfirmedView", booking);
+        }
 
         public ActionResult RideHistoryView()
         {

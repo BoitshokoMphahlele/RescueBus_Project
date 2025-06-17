@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -106,8 +107,28 @@ namespace RescueBus.Controllers
 
             return RedirectToAction("ManageView");
         }
+        public ActionResult ExportVehicles()
+        {
+            var vehicles = VehicleRepository.GetVehicles(); // Replace with your data source
 
-       
+            var sb = new StringBuilder();
+
+            // Add header
+            sb.AppendLine("ID,Make,Model,Year");
+
+            // Add each vehicle's info
+            foreach (var v in vehicles)
+            {
+                sb.AppendLine($"{v.RegistrationId},{v.Type}");
+            }
+
+            // Convert to bytes
+            byte[] buffer = Encoding.UTF8.GetBytes(sb.ToString());
+
+            return File(buffer, "text/csv", "Vehicles.csv");
+        }
+
+
 
     }
 }
