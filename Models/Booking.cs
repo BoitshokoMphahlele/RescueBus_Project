@@ -11,6 +11,7 @@ namespace RescueBus.Models
         public string servicetype { get; set; }
         public string FullName { get; set; }
         public string Phone { get; set; }
+        public string DriverPhone { get; set; }
         public DateTime PickUpTime { get; set; }
         public DateTime bookingDate { get; set; }
         public  string Reason { get; set; }

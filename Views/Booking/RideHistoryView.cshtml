@@ -26,18 +26,23 @@
 
             const booking = JSON.parse(bookingData);
 
-            const card = $(
-                `
-                <div class="card mb-3 p-3 booking-card" data-id="${booking.BookingID}" style="cursor: pointer;">
-                    <p><strong>ID:</strong> ${booking.BookingID}</p>
-                    <p><strong>Driver Name:</strong> ${booking.Driver}</p>
-                    <p><strong>Ambulance Type:</strong> ${booking.Vehicle}</p>
-                    <p><strong>PickUp Address:</strong> ${booking.Address}</p>        
-                    
-                </div>`
-            );
+            const card = $('<div></div>')
+                .addClass('card mb-3 p-3 booking-card')
+                .attr('data-id', booking.BookingID)
+                .css('cursor', 'pointer');
+
+            const idPara = $('<p></p>').html('<strong>ID:</strong> ' + booking.BookingID);
+            const driverPara = $('<p></p>').html('<strong>Driver Name:</strong> ' + booking.Driver);
+            const vehiclePara = $('<p></p>').html('<strong>Ambulance Type:</strong> ' + booking.Vehicle);
+            const addressPara = $('<p></p>').html('<strong>PickUp Address:</strong> ' + booking.Address);
+
+            card.append(idPara);
+            card.append(driverPara);
+            card.append(vehiclePara);
+            card.append(addressPara);
 
             $('#rideHistoryContainer').append(card);
+
         });
 
        

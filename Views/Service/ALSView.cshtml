@@ -52,7 +52,7 @@
             </div>
 
             <div class="text-center mt-3">
-                <button type="submit" class="btn btn-secondary mb-3 mt-3">Book Ambulance</button>
+                <button type="submit" class="btn btn-secondary mb-3 mt-3" >Book Ambulance</button>
             </div>
         }
     </div>
@@ -60,4 +60,12 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="@Url.Content("~/Scripts/Myscript.js")"></script>
+
+<script>
+
+    function SaveBooking() {
+        localStorage.setItem("selectedBookingId", booking.BookingID);
+
+    }
+</script>
 
